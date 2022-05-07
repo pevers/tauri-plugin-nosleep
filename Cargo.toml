@@ -1,0 +1,14 @@
+[package]
+name = "tauri-plugin-nosleep"
+version = "0.0.0"
+authors = [ "You" ]
+description = ""
+edition = "2021"
+rust-version = "1.57"
+exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
+
+[dependencies]
+tauri = { version = "1.0.0-rc.8" }
+serde = "1.0"
+thiserror = "1.0"
+nosleep = { version = "0.2.0-rc.2", features = ["serde"] }
