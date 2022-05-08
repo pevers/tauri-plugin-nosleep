@@ -6,7 +6,11 @@ description = "Tauri plugin to prevent the power save functionality in the OS"
 keywords = ["tauri-plugin", "nosleep", "powersave", "caffeine"]
 edition = "2021"
 rust-version = "1.57"
+homepage = "https://github.com/pevers/tauri-plugin-nosleep"
+repository = "https://github.com/pevers/tauri-plugin-nosleep"
+license = "MIT"
 exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
+readme = "README.md"
 
 [dependencies]
 tauri = { version = "1.0.0-rc.8" }
