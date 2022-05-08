@@ -16,9 +16,9 @@ fn main() {
 Add the NPM package.
 
 ```console
-npm install tauri-plugin-nosleep
+npm install tauri-plugin-nosleep-api
 # or
-yarn add tauri-plugin-nosleep
+yarn add tauri-plugin-nosleep-api
 ```
 
 Use this within TS/JS.
