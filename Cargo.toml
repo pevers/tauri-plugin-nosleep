@@ -12,4 +12,4 @@ exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
 tauri = { version = "1.0.0-rc.8" }
 serde = "1.0"
 thiserror = "1.0"
-nosleep = { path = "nosleep", version = "0.2.0-rc.3", features = ["serde"] }
+nosleep = { version = "0.2.0-rc.3", features = ["serde"] }
