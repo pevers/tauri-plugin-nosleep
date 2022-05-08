@@ -1,6 +1,6 @@
-use nosleep::{NoSleep, NoSleepHandle, NoSleepType};
+use nosleep::{NoSleep, NoSleepType};
 use serde::{ser::Serializer, Serialize};
-use std::{ops::Deref, sync::Mutex};
+use std::sync::Mutex;
 use tauri::{
     command,
     plugin::{Builder, TauriPlugin},
@@ -26,7 +26,6 @@ impl Serialize for Error {
 
 pub struct NoSleepState {
     no_sleep: Mutex<NoSleep>,
-    no_sleep_handle: Mutex<Option<NoSleepHandle>>,
 }
 
 #[command]
@@ -36,12 +35,7 @@ async fn block<R: Runtime>(
     state: State<'_, NoSleepState>,
     no_sleep_type: NoSleepType,
 ) -> Result<()> {
-    // Unblock the previous handle, if we have any
-    if let Some(handle) = state.no_sleep_handle.lock().unwrap().deref() {
-        handle.stop()?;
-    }
-    let handle = state.no_sleep.lock().unwrap().start(no_sleep_type)?;
-    let _ = state.no_sleep_handle.lock().unwrap().insert(handle);
+    state.no_sleep.lock().unwrap().start(no_sleep_type)?;
     Ok(())
 }
 
@@ -51,9 +45,7 @@ async fn unblock<R: Runtime>(
     _window: Window<R>,
     state: State<'_, NoSleepState>,
 ) -> Result<()> {
-    if let Some(handle) = state.no_sleep_handle.lock().unwrap().deref() {
-        handle.stop()?;
-    }
+    state.no_sleep.lock().unwrap().stop()?;
     Ok(())
 }
 
@@ -63,8 +55,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![block, unblock])
         .setup(|app| {
             app.manage(NoSleepState {
-                no_sleep: Mutex::new(NoSleep::new()?),
-                no_sleep_handle: Mutex::new(None),
+                no_sleep: Mutex::new(NoSleep::new()?)
             });
             Ok(())
         })
