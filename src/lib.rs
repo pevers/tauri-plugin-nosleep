@@ -55,7 +55,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![block, unblock])
         .setup(|app| {
             app.manage(NoSleepState {
-                no_sleep: Mutex::new(NoSleep::new()?)
+                no_sleep: Mutex::new(NoSleep::new()?),
             });
             Ok(())
         })
