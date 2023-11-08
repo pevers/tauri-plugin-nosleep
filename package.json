@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-nosleep-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Peter Evers <pevers90@gmail.com>",
   "description": "Tauri plugin to block the power save functionality in the OS",
   "browser": "webview-dist/index.js",
