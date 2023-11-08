@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-nosleep"
-version = "0.1.0"
+version = "0.1.1"
 authors = [ "Peter Evers <pevers90@gmail.com>" ]
 description = "Tauri plugin to prevent the power save functionality in the OS"
 keywords = ["tauri-plugin", "nosleep", "powersave", "caffeine"]
@@ -16,4 +16,4 @@ readme = "README.md"
 tauri = { version = "1.0.0-rc.8" }
 serde = "1.0"
 thiserror = "1.0"
-nosleep = { version = "0.2.0", features = ["serde"] }
+nosleep = { version = "0.2.1", features = ["serde"] }
