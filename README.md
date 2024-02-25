@@ -1,6 +1,7 @@
 # tauri-plugin-nosleep
 
 ![Test](https://github.com/pevers/tauri-plugin-nosleep/workflows/Test/badge.svg)
+[![dependency status](https://deps.rs/repo/github/pevers/tauri-plugin-nosleep/status.svg)](https://deps.rs/repo/github/pevers/tauri-plugin-nosleep)
 
 Tauri plugin to block the power save functionality in the OS
 

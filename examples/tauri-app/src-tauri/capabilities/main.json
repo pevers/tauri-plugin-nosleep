@@ -1,0 +1,11 @@
+
+{
+    "$schema": "./schemas/desktop-schema.json",
+    "identifier": "main-capability",
+    "description": "Capability for the plugin",
+    "windows": ["main"],
+    "permissions": [
+      "nosleep:allow-block",
+      "nosleep:allow-unblock"
+    ]
+  }

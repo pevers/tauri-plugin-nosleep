@@ -1,59 +1,50 @@
-use nosleep::{NoSleep, NoSleepType};
-use serde::{ser::Serializer, Serialize};
-use std::sync::Mutex;
+use nosleep::NoSleep;
 use tauri::{
-    command,
     plugin::{Builder, TauriPlugin},
-    AppHandle, Manager, Runtime, State, Window,
+    Manager, Runtime,
 };
 
-type Result<T> = std::result::Result<T, Error>;
+use std::sync::Mutex;
 
-#[derive(Debug, thiserror::Error)]
-pub enum Error {
-    #[error(transparent)]
-    ScreenLockError(#[from] nosleep::Error),
-}
+pub use models::*;
 
-impl Serialize for Error {
-    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        serializer.serialize_str(self.to_string().as_ref())
-    }
-}
+#[cfg(desktop)]
+mod desktop;
 
-pub struct NoSleepState {
+mod commands;
+mod error;
+mod models;
+
+pub use error::{Error, Result};
+
+#[cfg(desktop)]
+use desktop::Nosleep;
+
+struct NoSleepState {
     no_sleep: Mutex<NoSleep>,
 }
 
-#[command]
-async fn block<R: Runtime>(
-    _app: AppHandle<R>,
-    _window: Window<R>,
-    state: State<'_, NoSleepState>,
-    no_sleep_type: NoSleepType,
-) -> Result<()> {
-    state.no_sleep.lock().unwrap().start(no_sleep_type)?;
-    Ok(())
+/// Extensions to [`tauri::App`], [`tauri::AppHandle`] and [`tauri::Window`] to access the nosleep APIs.
+pub trait NosleepExt<R: Runtime> {
+    fn nosleep(&self) -> &Nosleep<R>;
 }
 
-#[command]
-async fn unblock<R: Runtime>(
-    _app: AppHandle<R>,
-    _window: Window<R>,
-    state: State<'_, NoSleepState>,
-) -> Result<()> {
-    state.no_sleep.lock().unwrap().stop()?;
-    Ok(())
+impl<R: Runtime, T: Manager<R>> crate::NosleepExt<R> for T {
+    fn nosleep(&self) -> &Nosleep<R> {
+        self.state::<Nosleep<R>>().inner()
+    }
 }
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("nosleep")
-        .invoke_handler(tauri::generate_handler![block, unblock])
-        .setup(|app| {
+        .invoke_handler(tauri::generate_handler![commands::block, commands::unblock])
+        .setup(|app, api| {
+            #[cfg(desktop)]
+            let nosleep = desktop::init(app, api)?;
+            app.manage(nosleep);
+
+            // manage state so it is accessible by the commands
             app.manage(NoSleepState {
                 no_sleep: Mutex::new(NoSleep::new()?),
             });
