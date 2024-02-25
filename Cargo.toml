@@ -1,7 +1,9 @@
 [package]
 name = "tauri-plugin-nosleep"
+metadata = "tauri-plugin"
 version = "2.0.0-beta.1"
 authors = [ "Peter Evers <pevers90@gmail.com>" ]
+license = "MIT"
 description = "Tauri plugin to prevent the power save functionality in the OS"
 edition = "2021"
 rust-version = "1.70"

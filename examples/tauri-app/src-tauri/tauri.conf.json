@@ -1,7 +1,7 @@
 {
   "productName": "tauri-app",
   "version": "0.0.0",
-  "identifier": "peter.dev",
+  "identifier": "nosleep.dev",
   "build": {
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build",
