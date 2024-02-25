@@ -6,14 +6,11 @@ use tauri::{
 
 use std::sync::Mutex;
 
-pub use models::*;
-
 #[cfg(desktop)]
 mod desktop;
 
 mod commands;
 mod error;
-mod models;
 
 pub use error::{Error, Result};
 
