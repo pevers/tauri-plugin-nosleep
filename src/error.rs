@@ -1,11 +1,14 @@
 use serde::{ser::Serializer, Serialize};
-
+use nosleep::NoSleepError;
 pub type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error(transparent)]
-    ScreenLockError(#[from] nosleep::Error),
+    ScreenLockError(#[from] NoSleepError),
+    #[cfg(mobile)]
+    #[error(transparent)]
+    PluginInvoke(#[from] tauri::plugin::mobile::PluginInvokeError),
 }
 
 impl Serialize for Error {

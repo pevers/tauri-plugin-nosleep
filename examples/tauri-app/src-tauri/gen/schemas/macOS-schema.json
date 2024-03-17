@@ -587,10 +587,17 @@
           ]
         },
         {
-          "description": "nosleep:allow-block -> Enables the block command without any pre-configured scope.",
+          "description": "nosleep:allow-prevent-display-sleep -> Enables the prevent_display_sleep command without any pre-configured scope.",
           "type": "string",
           "enum": [
-            "nosleep:allow-block"
+            "nosleep:allow-prevent-display-sleep"
+          ]
+        },
+        {
+          "description": "nosleep:allow-prevent-system-sleep -> Enables the prevent_system_sleep command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "nosleep:allow-prevent-system-sleep"
           ]
         },
         {
@@ -601,10 +608,17 @@
           ]
         },
         {
-          "description": "nosleep:deny-block -> Denies the block command without any pre-configured scope.",
+          "description": "nosleep:deny-prevent-display-sleep -> Denies the prevent_display_sleep command without any pre-configured scope.",
           "type": "string",
           "enum": [
-            "nosleep:deny-block"
+            "nosleep:deny-prevent-display-sleep"
+          ]
+        },
+        {
+          "description": "nosleep:deny-prevent-system-sleep -> Denies the prevent_system_sleep command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "nosleep:deny-prevent-system-sleep"
           ]
         },
         {

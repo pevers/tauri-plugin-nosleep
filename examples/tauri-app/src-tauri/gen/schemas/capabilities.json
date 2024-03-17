@@ -1,1 +1,1 @@
-{"main-capability":{"identifier":"main-capability","description":"Capability for the plugin","remote":null,"local":true,"windows":["main"],"permissions":["nosleep:allow-block","nosleep:allow-unblock"],"platforms":["linux","macOS","windows","android","iOS"]}}
+{"main-capability":{"identifier":"main-capability","description":"Capability for the plugin","remote":null,"local":true,"windows":["main"],"permissions":["nosleep:allow-prevent-display-sleep","nosleep:allow-prevent-system-sleep","nosleep:allow-unblock"],"platforms":["linux","macOS","windows","android","iOS"]}}

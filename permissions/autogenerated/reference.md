@@ -1,12 +1,20 @@
 # Permissions
 
-## allow-block
+## allow-prevent-display-sleep
 
-Enables the block command without any pre-configured scope.
+Enables the prevent_display_sleep command without any pre-configured scope.
 
-## deny-block
+## deny-prevent-display-sleep
 
-Denies the block command without any pre-configured scope.
+Denies the prevent_display_sleep command without any pre-configured scope.
+
+## allow-prevent-system-sleep
+
+Enables the prevent_system_sleep command without any pre-configured scope.
+
+## deny-prevent-system-sleep
+
+Denies the prevent_system_sleep command without any pre-configured scope.
 
 ## allow-unblock
 

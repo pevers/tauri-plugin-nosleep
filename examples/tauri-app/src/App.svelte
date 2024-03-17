@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { block, NoSleepType, unblock } from 'tauri-plugin-nosleep-api'
+	import { prevent_display_sleep, prevent_system_sleep, unblock } from 'tauri-plugin-nosleep-api'
 
 	let response = ''
 
@@ -8,11 +8,11 @@
 	}
 
 	function _blockPreventUserIdleDisplaySleep() {
-		block(NoSleepType.PreventUserIdleDisplaySleep).then(() => updateResponse("OK")).catch(updateResponse)
+		prevent_display_sleep().then(() => updateResponse("OK")).catch(updateResponse)
 	}
 
 	function _blockPreventUserIdleSystemSleep() {
-		block(NoSleepType.PreventUserIdleSystemSleep).then(() => updateResponse("OK")).catch(updateResponse)
+		prevent_system_sleep().then(() => updateResponse("OK")).catch(updateResponse)
 	}
 
 	function _unblock() {

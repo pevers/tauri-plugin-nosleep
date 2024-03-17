@@ -247,17 +247,31 @@
       "type": "string",
       "oneOf": [
         {
-          "description": "allow-block -> Enables the block command without any pre-configured scope.",
+          "description": "allow-prevent-display-sleep -> Enables the prevent_display_sleep command without any pre-configured scope.",
           "type": "string",
           "enum": [
-            "allow-block"
+            "allow-prevent-display-sleep"
           ]
         },
         {
-          "description": "deny-block -> Denies the block command without any pre-configured scope.",
+          "description": "deny-prevent-display-sleep -> Denies the prevent_display_sleep command without any pre-configured scope.",
           "type": "string",
           "enum": [
-            "deny-block"
+            "deny-prevent-display-sleep"
+          ]
+        },
+        {
+          "description": "allow-prevent-system-sleep -> Enables the prevent_system_sleep command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-prevent-system-sleep"
+          ]
+        },
+        {
+          "description": "deny-prevent-system-sleep -> Denies the prevent_system_sleep command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-prevent-system-sleep"
           ]
         },
         {

@@ -5,7 +5,8 @@
     "description": "Capability for the plugin",
     "windows": ["main"],
     "permissions": [
-      "nosleep:allow-block",
+      "nosleep:allow-prevent-display-sleep",
+      "nosleep:allow-prevent-system-sleep",
       "nosleep:allow-unblock"
     ]
   }

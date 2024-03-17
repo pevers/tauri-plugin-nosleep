@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-prevent-display-sleep"
+description = "Enables the prevent_display_sleep command without any pre-configured scope."
+commands.allow = ["prevent_display_sleep"]
+
+[[permission]]
+identifier = "deny-prevent-display-sleep"
+description = "Denies the prevent_display_sleep command without any pre-configured scope."
+commands.deny = ["prevent_display_sleep"]

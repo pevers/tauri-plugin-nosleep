@@ -25,8 +25,19 @@ yarn add tauri-plugin-nosleep-api
 Use this within TS/JS.
 
 ```js
-import { block, NoSleepType, unblock } from 'tauri-plugin-nosleep-api'
-block(NoSleepType.PreventUserIdleDisplaySleep);
+import { prevent_display_sleep, unblock } from 'tauri-plugin-nosleep-api'
+prevent_display_sleep();
 // To unblock whenever you are done
 unblock();
 ```
+
+
+## Supported Platforms
+
+| Platform | Status | Tested |
+|----------|--------|--------|
+| Linux    | ✔️      | ✔️      |
+| macOS    | ✔️      | ✔️      |
+| Windows  | ✔️      | ✔️      |
+| iOS      | ✔️      | ❌      |
+| Android  | ❌      | ❌     |
