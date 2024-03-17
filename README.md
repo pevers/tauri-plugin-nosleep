@@ -1,6 +1,7 @@
 # tauri-plugin-nosleep
 
 ![Test](https://github.com/pevers/tauri-plugin-nosleep/workflows/Test/badge.svg)
+[![dependency status](https://deps.rs/repo/github/pevers/tauri-plugin-nosleep/status.svg)](https://deps.rs/repo/github/pevers/tauri-plugin-nosleep)
 
 Tauri plugin to block the power save functionality in the OS
 
@@ -24,8 +25,19 @@ yarn add tauri-plugin-nosleep-api
 Use this within TS/JS.
 
 ```js
-import { block, NoSleepType, unblock } from 'tauri-plugin-nosleep-api'
-block(NoSleepType.PreventUserIdleDisplaySleep);
+import { prevent_display_sleep, unblock } from 'tauri-plugin-nosleep-api'
+prevent_display_sleep();
 // To unblock whenever you are done
 unblock();
 ```
+
+
+## Supported Platforms
+
+| Platform | Status | Tested |
+|----------|--------|--------|
+| Linux    | ✔️      | ✔️      |
+| macOS    | ✔️      | ✔️      |
+| Windows  | ✔️      | ✔️      |
+| iOS      | ✔️      | ❌      |
+| Android  | ❌      | ❌     |
